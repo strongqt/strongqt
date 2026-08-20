@@ -1,0 +1,64 @@
+! Hide "1080p Premium" in the video quality menu
+youtube.com##.ytp-quality-menu .ytp-menuitem:has(.ytp-premium-label)
+! YT Search - keep only videos (no shorts) and channels
+youtube.com##ytd-search ytd-item-section-renderer>#contents>:is(:not(ytd-video-renderer,ytd-channel-renderer,yt-showing-results-for-renderer,[icon-name="promo-full-height:EMPTY_SEARCH"]),ytd-video-renderer:has([aria-label="Shorts"])),ytd-secondary-search-container-renderer
+! YT - Below the Player Buttons - Join
+www.youtube.com###top-row.ytd-watch-metadata #sponsor-button
+! YT - Below the Player Buttons - Ask
+www.youtube.com###top-row.ytd-watch-metadata yt-button-view-model:has([aria-label="Ask"])
+! YT - Below the Player Buttons - Thanks
+www.youtube.com###top-row.ytd-watch-metadata yt-button-view-model:has([aria-label="Thanks"])
+! YT - Below the Player Buttons - Download
+www.youtube.com###top-row.ytd-watch-metadata ytd-download-button-renderer
+! YT - Below the Player Buttons - Clip
+www.youtube.com###top-row.ytd-watch-metadata yt-button-view-model:has([aria-label="Clip"])
+! Playables
+www.youtube.com##ytd-rich-section-renderer:has([title="YouTube Playables"][href="/playables"])
+! YT Menu - Hide Playables
+www.youtube.com##ytd-guide-entry-renderer:has([href="/playables"])
+! YT Search - Hide Playables
+www.youtube.com##ytd-shelf-renderer:has([href^="/playables"])
+www.youtube.com##ytd-rich-item-renderer[is-mini-game-card-shel]
+
+! YT - Homepage and Subscriptions (Grid View) - Hide the Shorts section
+youtube.com##[is-shorts]
+! YT - Menu - Hide the Shorts button
+www.youtube.com###guide [title="Shorts"], .ytd-mini-guide-entry-renderer[title="Shorts"]
+! YT - Search - Hide Shorts
+www.youtube.com##ytd-search ytd-video-renderer:has([overlay-style="SHORTS"],[href^="/shorts/"])
+! YT - Search, Channels, Subscriptions (List View) and Sidebar/Below Player Recommendations - Hide the Shorts sections
+www.youtube.com##ytd-reel-shelf-renderer
+! YT - Channels - Hide the Shorts tab
+www.youtube.com##[tab-title="Shorts"]
+! YT - Subscriptions - Hide Shorts - Grid View
+www.youtube.com##ytd-browse[page-subtype="subscriptions"] ytd-grid-video-renderer:has([overlay-style="SHORTS"],[href^="/shorts/"])
+! YT - Subscriptions - Hide Shorts - List View
+www.youtube.com##ytd-browse[page-subtype="subscriptions"] ytd-video-renderer:has([overlay-style="SHORTS"],[href^="/shorts/"])
+! YT - Subscriptions - New Layout - Hide Shorts
+www.youtube.com##ytd-browse[page-subtype="subscriptions"] ytd-rich-item-renderer:has([overlay-style="SHORTS"],[href^="/shorts/"])
+! YT - Sidebar - Hide Shorts
+www.youtube.com###related :is(ytd-compact-video-renderer,yt-lockup-view-model):has([overlay-style="SHORTS"],[href^="/shorts/"])
+! YT - History - Hide Shorts
+www.youtube.com##ytd-item-section-renderer[page-subtype]:has(>#contents>[is-history]>#dismissible>ytd-thumbnail>#thumbnail[href^="/shorts/"])
+
+! YT Mobile - Hide the Shorts Menu button
+m.youtube.com##ytm-pivot-bar-item-renderer:has(>.pivot-shorts)
+! YT Mobile - Hide the Shorts sections
+m.youtube.com##:is(ytm-rich-section-renderer,grid-shelf-view-model):has([href^="/shorts/"])
+! YT Mobile - Search - Hide Shorts
+m.youtube.com##ytm-search ytm-video-with-context-renderer:has([href^="/shorts/"])
+! YT Mobile - Channels - Hide the Shorts button
+m.youtube.com##[tab-title="Shorts"]
+! YT Mobile - History - Hide Shorts
+m.youtube.com##[tab-identifier="FEhistory"] ytm-compact-video-renderer:has(>div>a[href^="/shorts/"])
+
+www.youtube.com##ytd-compact-video-renderer:has(#video-title[aria-label~="views"]:not(:is([aria-label*=",0"],[aria-label*=",1"],[aria-label*=",2"],[aria-label*=",3"],[aria-label*=",4"],[aria-label*=",5"],[aria-label*=",6"],[aria-label*=",7"],[aria-label*=",8"],[aria-label*=",9"])))
+
+! People You May Know
+www.facebook.com##:is([aria-posinset],[aria-describedby]:not([aria-posinset])):has([href="/friends/"]):style(height: 0 !important; overflow: hidden !important;)
+! Suggested groups
+www.facebook.com##:is([aria-posinset],[aria-describedby]:not([aria-posinset])):has([href="/groups/discover/"]):style(height: 0 !important; overflow: hidden !important;)
+! Reels and short videos (English UI)
+www.facebook.com##:is([aria-posinset],[aria-describedby]:not([aria-posinset])):has([aria-label="Reels"]):style(height: 0 !important; overflow: hidden !important;)
+! Suggested pages
+www.facebook.com##:is([aria-posinset],[aria-describedby]:not([aria-posinset])):has([aria-label="Suggested pages"]):style(height: 0 !important; overflow: hidden !important;)
