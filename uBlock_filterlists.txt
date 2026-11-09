@@ -10,3 +10,6 @@ www.youtube.com##ytd-search ytd-item-section-renderer>#contents>:is(:not(ytd-vid
 
 ! YouTube - Hide Join button below the video player
 www.youtube.com###top-row.ytd-watch-metadata #sponsor-button
+
+! People You May Know
+www.facebook.com##:is([aria-posinset],[aria-describedby]:not([aria-posinset])):has([href="/friends/"]):style(height: 0 !important; overflow: hidden !important;)
