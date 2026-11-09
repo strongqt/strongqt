@@ -1,15 +1,116 @@
-! Title: YouTube Custom Filters
-! Description: Hide Premium quality options, remove Shorts from search, and hide Join button
-! Version: 1.0
 
-! Hide "1080p Premium" in the video quality menu
+! Title: YouTube and Facebook Custom Filters
+! Description: Hide YouTube Shorts, Mixes, Premium options, Join buttons, and Facebook People You May Know
+! Version: 1.1
+! Expires: 5 days
+
+! =========================================
+! YOUTUBE - PREMIUM AND MEMBERSHIP
+! =========================================
+
+! Hide 1080p Premium in video quality menu
 www.youtube.com##.ytp-quality-menu .ytp-menuitem:has(.ytp-premium-label)
 
-! YouTube Search - Keep only videos and channels (exclude Shorts)
-www.youtube.com##ytd-search ytd-item-section-renderer>#contents>:is(:not(ytd-video-renderer,ytd-channel-renderer,yt-showing-results-for-renderer,[icon-name="promo-full-height:EMPTY_SEARCH"]),ytd-video-renderer:has([aria-label="Shorts"])),ytd-secondary-search-container-renderer
-
-! YouTube - Hide Join button below the video player
+! Hide Join button below video player
 www.youtube.com###top-row.ytd-watch-metadata #sponsor-button
 
-! People You May Know
+
+! =========================================
+! YOUTUBE - SEARCH
+! =========================================
+
+! Keep only videos and channels in search results
+www.youtube.com##ytd-search ytd-item-section-renderer>#contents>:is(:not(ytd-video-renderer,ytd-channel-renderer,yt-showing-results-for-renderer,[icon-name="promo-full-height:EMPTY_SEARCH"]),ytd-video-renderer:has([aria-label="Shorts"])),ytd-secondary-search-container-renderer
+
+! Hide Shorts in search results
+www.youtube.com##ytd-search ytd-video-renderer:has([overlay-style="SHORTS"],[href^="/shorts/"])
+
+! Hide Mixes in search results
+www.youtube.com##ytd-radio-renderer, :is(ytd-search yt-lockup-view-model,ytd-video-renderer[is-search]):has([href*="&start_radio=1"][aria-haspopup])
+
+
+! =========================================
+! YOUTUBE - HOMEPAGE AND SUBSCRIPTIONS
+! =========================================
+
+! Hide Shorts sections on homepage and subscriptions
+youtube.com##[is-shorts]
+
+! Hide Shorts in subscriptions - Grid view
+www.youtube.com##ytd-browse[page-subtype="subscriptions"] ytd-grid-video-renderer:has([overlay-style="SHORTS"],[href^="/shorts/"])
+
+! Hide Shorts in subscriptions - List view
+www.youtube.com##ytd-browse[page-subtype="subscriptions"] ytd-video-renderer:has([overlay-style="SHORTS"],[href^="/shorts/"])
+
+! Hide Shorts in subscriptions - New layout
+www.youtube.com##ytd-browse[page-subtype="subscriptions"] ytd-rich-item-renderer:has([overlay-style="SHORTS"],[href^="/shorts/"])
+
+! Hide Shorts shelves
+www.youtube.com##ytd-reel-shelf-renderer
+
+! Hide Mixes on homepage
+youtube.com##ytd-rich-item-renderer:has([href*="start_radio=1"])
+
+
+! =========================================
+! YOUTUBE - NAVIGATION AND SIDEBAR
+! =========================================
+
+! Hide Shorts menu button
+www.youtube.com###guide [title="Shorts"], .ytd-mini-guide-entry-renderer[title="Shorts"]
+
+! Hide Shorts in sidebar
+www.youtube.com###related :is(ytd-compact-video-renderer,yt-lockup-view-model):has([overlay-style="SHORTS"],[href^="/shorts/"])
+
+! Hide Mixes in sidebar
+youtube.com##ytd-compact-radio-renderer, :is(#related yt-lockup-view-model,ytd-compact-video-renderer):has([href*="&start_radio=1"])
+
+! Hide YouTube Music playlists
+youtube.com##ytd-compact-playlist-renderer:has([title^="YouTube"])
+
+
+! =========================================
+! YOUTUBE - CHANNELS AND HISTORY
+! =========================================
+
+! Hide Shorts tab on channels
+www.youtube.com##[tab-title="Shorts"]
+
+! Hide Shorts in history
+www.youtube.com##ytd-item-section-renderer[page-subtype]:has(>#contents>[is-history]>#dismissible>ytd-thumbnail>#thumbnail[href^="/shorts/"])
+
+
+! =========================================
+! YOUTUBE - VIDEO PLAYER
+! =========================================
+
+! Hide Mixes in video end cards
+youtube.com##.ytp-videowall-still[data-is-mix="true"]
+
+
+! =========================================
+! YOUTUBE MOBILE
+! =========================================
+
+! Hide Shorts menu button
+m.youtube.com##ytm-pivot-bar-item-renderer:has(>.pivot-shorts)
+
+! Hide Shorts sections
+m.youtube.com##:is(ytm-rich-section-renderer,grid-shelf-view-model):has([href^="/shorts/"])
+
+! Hide Shorts in search
+m.youtube.com##ytm-search ytm-video-with-context-renderer:has([href^="/shorts/"])
+
+! Hide Shorts tab on channels
+m.youtube.com##[tab-title="Shorts"]
+
+! Hide Shorts in history
+m.youtube.com##[tab-identifier="FEhistory"] ytm-compact-video-renderer:has(>div>a[href^="/shorts/"])
+
+
+! =========================================
+! FACEBOOK
+! =========================================
+
+! Hide People You May Know
 www.facebook.com##:is([aria-posinset],[aria-describedby]:not([aria-posinset])):has([href="/friends/"]):style(height: 0 !important; overflow: hidden !important;)
